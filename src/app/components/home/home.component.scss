@@ -1,17 +1,140 @@
+@import '~@angular/material/theming';
+
+#btn-generate {
+  //width: 50%;
+  //height: 100px;
+}
+
+//.nav-wrapper {
+//  width: 80%;
+//}
+
+mat-toolbar {
+  -webkit-app-region: drag;
+}
+
+tbody {
+  height: 200px;
+  overflow: scroll;
+}
+
+.brand-logo {
+  font-family: 'Lobster', cursive;
+}
+
+.logged-out {
+  background-color: grey;
+  transition: background-color 2s;
+}
+
+.all-good {
+  background-color: orangered;
+  transition: background-color 2s;
+}
+
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 10%;
+  left:7%;
+}
+
+.btn-green {
+  background-color: darken(orangered, 2) !important;
+  transition: background-color 2s;
+}
+
+.btn-gray {
+  background-color: dimgray !important;
+  transition: background-color 2s;
+}
+
+.grey-text {
+  transition: color 2s;
+  //font-family: 'Rammetto One', cursive;
+}
+
+.black-text {
+  transition: color 2s;
+  color: black;
+}
+
+.orange-text {
+  transition: color 2s;
+  font-family: 'Rammetto One', cursive;
+  color: lighten(orangered, 3);
+}
+
+.rammetto-font {
+  font-family: 'Rammetto One', cursive;
+  font-size: 3rem;
+}
+
 .container {
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+
+.flex-container {
   display: flex;
-  align-items: center;
+  width: 100%;
   justify-content: center;
+  align-items: flex-start;
+  align-content: space-around;
+}
 
-  background: url(../../../assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
+.controls {
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
 
-  .title {
-    color: white;
-    margin:0;
-    padding:50px 20px;
+  .number {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 6px !important;
   }
 
+  .generate-button {
+    width: 80%;
+    height: 80px;
+  }
+}
+
+.display {
+  width: 60%;
+  margin: 16px;
+  //display: flex;
+  //justify-content: stretch;
+  //flex-grow: 1;
+}
+
+mat-toolbar-row.mat-toolbar-row.flex-nav {
+  display: flex;
+  width: 80%;
+  justify-content: flex-end !important;
+}
+
+.btn-space {
+  margin: 0px 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.nav-authed {
+  transition: background-color 3s;
+  background-color: darken(map_get($mat-indigo, 800), 7);
+}
+
+.nav-unauthed {
+  transition: background-color 3s;
 }

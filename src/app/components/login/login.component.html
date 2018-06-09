@@ -1,0 +1,31 @@
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Login</h4>
+    <!--<div class="container">-->
+      <!--<div class="row">-->
+        <!--<div class="input-field col s6">-->
+          <!--<input [(ngModel)]="login_name" id="email" type="text" class="validate">-->
+          <!--<label class="active" for="email">Username</label>-->
+        <!--</div>-->
+        <!--<div class="input-field col s6">-->
+          <!--<input name="email" [(ngModel)]="login_password" id="password" type="password" class="validate">-->
+          <!--<label class="active" for="email">Password</label>-->
+        <!--</div>-->
+        <!--{{login_name}}-->
+        <!--{{login_password}}-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="form-flex">
+      <mat-form-field>
+        <input [(ngModel)]="username" matInput placeholder="User Name">
+      </mat-form-field>
+      <mat-form-field>
+        <input [(ngModel)]="password" matInput placeholder="Password">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button style="margin: 0px 12px" mat-raised-button color="accent" (click)="login()">Log In</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  </div>
+</div>

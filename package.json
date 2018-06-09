@@ -33,7 +33,16 @@
     "test": "ng test",
     "e2e": "ng e2e"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@angular/animations": "^6.0.3",
+    "@angular/cdk": "^6.1.0",
+    "@angular/flex-layout": "^6.0.0-beta.15",
+    "@angular/material": "^6.1.0",
+    "angular2-materialize": "^15.1.10",
+    "angularfire2": "^5.0.0-rc.10",
+    "firebase": "^5.0.4",
+    "materialize-css": "^0.100.2"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.6.3",
     "@angular/cli": "6.0.3",
