@@ -18,25 +18,6 @@
   </div>
   <div class="display">
     <div>
-      <!--<h1>Generated Sku's:</h1>-->
-      <!--<table class="data-table">-->
-        <!--<thead>-->
-        <!--<tr>-->
-          <!--<th>Number</th>-->
-          <!--<th>User</th>-->
-          <!--<th>Time Stamp</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-
-        <!--<tbody>-->
-        <!--<tr *ngFor="let sku of skus">-->
-          <!--<td>{{sku.number}}</td>-->
-          <!--<td>{{sku.generatedBy}}</td>-->
-          <!--&lt;!&ndash; <td>{{sku.timeStamp.seconds | date : 'mediumTime': '+0900'}}</td> &ndash;&gt;-->
-          <!--<td>{{ sku.timeStamp | date : 'shortDate' }} @ {{ sku.timeStamp | date : 'shortTime' }}</td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
-      <!--</table>-->
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search For Sku">
       </mat-form-field>
