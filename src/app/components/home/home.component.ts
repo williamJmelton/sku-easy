@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   lookUpSku() {
-    let sku = this._worker.lookUpSku(this.skuSearch).subscribe(next => {
+    const sku = this._worker.lookUpSku(this.skuSearch).subscribe(next => {
       this.openSkuLookupDialog(next);
     });
   }
@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   generate() {
-    this._worker.generate(this.newestSku, this.userName);
+    this._worker.generate(this.userName);
   }
 
   logout() {
@@ -145,9 +145,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 }
 
-@Component({
-  selector: 'snack-bar-component-example-snack',
-  template: `<h4>Please Login.</h4>`,
-  styles: [`.example-pizza-party { color: hotpink; }`],
-})
-export class SnackbarComponent {}
+// @Component({
+//   selector: 'app-snack-bar-component-example-snack',
+//   template: `<h4>Please Login.</h4>`,
+//   styles: [`.example-pizza-party { color: hotpink; }`],
+// })
+// export class SnackbarComponent {}

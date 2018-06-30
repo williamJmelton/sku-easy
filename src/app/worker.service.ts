@@ -7,10 +7,18 @@ import { flatMap } from 'rxjs/operators';
 import { Sku } from './models/Sku';
 import * as firebase from 'firebase';
 import { firestore } from 'firebase';
-// import * as firebase from '../../node_modules/firebase/firebase.js';
 
 @Injectable()
 export class WorkerService {
+/*
+
+ ██╗   ██╗ █████╗ ██████╗ ███████╗
+ ██║   ██║██╔══██╗██╔══██╗██╔════╝
+ ██║   ██║███████║██████╔╝███████╗
+ ╚██╗ ██╔╝██╔══██║██╔══██╗╚════██║
+  ╚████╔╝ ██║  ██║██║  ██║███████║
+   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+*/
   $skus: Observable<any>;
   $searchedSkus: Observable<any>;
   $userEmail = new ReplaySubject();
@@ -20,7 +28,17 @@ export class WorkerService {
   timeStamps: any;
   $auth = new ReplaySubject();
   newNumber;
+/*
 
+  ██████╗ ██████╗ ███╗   ██╗███████╗████████╗██████╗ ██╗   ██╗ ██████╗████████╗ ██████╗ ██████╗
+ ██╔════╝██╔═══██╗████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║   ██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+ ██║     ██║   ██║██╔██╗ ██║███████╗   ██║   ██████╔╝██║   ██║██║        ██║   ██║   ██║██████╔╝
+ ██║     ██║   ██║██║╚██╗██║╚════██║   ██║   ██╔══██╗██║   ██║██║        ██║   ██║   ██║██╔══██╗
+ ╚██████╗╚██████╔╝██║ ╚████║███████║   ██║   ██║  ██║╚██████╔╝╚██████╗   ██║   ╚██████╔╝██║  ██║
+  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝
+
+
+*/
   constructor(private _db: AngularFirestore, public _afAuth: AngularFireAuth) {
     this._db.firestore.settings({ timestampsInSnapshots: true });
     this.$skus = this._db
@@ -82,15 +100,8 @@ export class WorkerService {
       })
     );
   }
-  generate(lastNumber: number, person: string) {
-    const nextNumber = lastNumber + 1;
-    const generatedBy = 'Josh';
+  generate(person: string) {
     const timeStamp = Date.now(); // firebase.firestore.FieldValue.serverTimestamp();
-    const obj = {
-      number: nextNumber,
-      generatedBy: person,
-      timeStamp: timeStamp
-    };
 
     this._db.firestore
       .runTransaction(transaction => {
