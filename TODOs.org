@@ -1,0 +1,6 @@
+
+* Visual Tasks
+** TODO Make sku table grey when logged out
+* Functional Task
+** TODO Think about how you can keep users from being able to generate the same sku number.
+*** Think about it different ways. Keep users from being able to generate at the same time, disable generation serverside maybe, firebase security rules...IDK man

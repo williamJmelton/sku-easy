@@ -9,6 +9,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {LoginComponent} from '../login/login.component';
 import {MatTableDataSource, MatPaginator} from '@angular/material';
 import {Sku} from '../../models/Sku';
+import {MatSnackBar} from '@angular/material';
+import {SkuComponent} from './sku/sku.component';
 
 @Component({
   selector: 'app-home',
@@ -27,9 +29,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   clicks$: Observable<any>;
   displayedColumns = ['number', 'name', 'time'];
   dataSource: MatTableDataSource<Sku> = new MatTableDataSource([]);
-  isLoggedIn: boolean;
+  isLoggedIn: false;
+  skuSearch = 0;
 
-  constructor(private _worker: WorkerService, public dialog: MatDialog) {
+  constructor(private _worker: WorkerService, public dialog: MatDialog, public snackBar: MatSnackBar) {
     this.userName = 'anon';
     this._worker.getUserName().subscribe(data => {
       this.userName = data;
@@ -44,6 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.generate();
       } else {
         console.log('Must be logged in!');
+        this.openSnackBar();
       }
     });
   }
@@ -64,6 +68,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  lookUpSku() {
+    let sku = this._worker.lookUpSku(this.skuSearch).subscribe(next => {
+      this.openSkuLookupDialog(next);
+    });
   }
 
   getNewestSku() {
@@ -88,7 +98,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   logout() {
     this._worker.logout();
     this.userName = 'anon';
-    M.toast({html: 'You are logged out'});
+    this.snackBar.open('You are logged out', '', {
+      duration: 500
+    });
   }
 
   makeToast() {
@@ -97,14 +109,45 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
-  openDialog(): void {
+  openSnackBar() {
+    this.snackBar.open('Please Login.', '', {
+      duration: 500
+    });
+  }
+
+  openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '550px',
-      data: {}
+      data: {},
+      panelClass: 'custom-dialog-container'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
   }
+
+  openSkuLookupDialog(data: any) {
+    console.log('open sku dialog has been called and is starting...');
+    const dialogRef = this.dialog.open(SkuComponent, {
+      width: '550px',
+      data: {number: data.number, person: data.person}
+    });
+  }
+
+
+  handleClickedLogin() {
+    if (this.isLoggedIn) {
+      this.snackBar.open('You\'re already logged in', '', {duration: 500});
+    } else {
+      this.openLoginDialog();
+    }
+  }
 }
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  template: `<h4>Please Login.</h4>`,
+  styles: [`.example-pizza-party { color: hotpink; }`],
+})
+export class SnackbarComponent {}

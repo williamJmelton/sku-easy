@@ -9,6 +9,8 @@ main.js
 
 # dependencies
 /node_modules
+/functions/node_modules
+/functions
 
 # IDEs and editors
 /.idea

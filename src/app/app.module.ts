@@ -26,6 +26,7 @@ import {
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -43,6 +44,7 @@ import { WebviewDirective } from './directives/webview.directive';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { SkuComponent } from './components/home/sku/sku.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -54,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     HomeComponent,
     WebviewDirective,
-    LoginComponent
+    LoginComponent,
+    SkuComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatProgressSpinnerModule,
     MatTableModule,
     MatInputModule,
+    MatSnackBarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -87,7 +91,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [ElectronService, WorkerService],
   bootstrap: [AppComponent],
   entryComponents: [
-    LoginComponent
+    LoginComponent,
+    SkuComponent
   ]
 })
 export class AppModule { }

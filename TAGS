@@ -1,0 +1,28 @@
+
+e2e/protractor.conf.js,184
+  allScriptsTimeout: 25000,exports.config.allScriptsTimeout7,211
+  delayBrowserTimeInSeconds: 0,exports.config.delayBrowserTimeInSeconds8,239
+  specs: [exports.config.specs9,271
+
+functions/index.js,0
+
+main.js,244
+var electron_1 = require("electron");electron_13,41
+var path = require("path");path4,79
+var url = require("url");url5,107
+var win, serve;win6,133
+var args = process.argv.slice(1);args7,149
+function createWindow() {createWindow9,248
+
+postcss.config.js,0
+
+src/app/app.component.html,0
+
+src/app/components/home/home.component.html,0
+
+src/app/components/login/login.component.html,0
+
+src/index.html,0
+
+src/karma.conf.js,58
+module.exports = function (config) {module.exports4,130

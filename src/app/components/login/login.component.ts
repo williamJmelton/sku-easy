@@ -9,8 +9,8 @@ import {WorkerService} from '../../worker.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-username: string;
-password: string;
+  username = 'emad';
+  password = 'emad2018';
 
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,

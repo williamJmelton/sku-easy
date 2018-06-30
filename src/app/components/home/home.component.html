@@ -6,21 +6,24 @@
     </div>
   </mat-toolbar-row>
   <mat-toolbar-row style="justify-content: flex-end;">
-      <button mat-raised-button color="accent" class="btn-space" (click)="openDialog()">Log In</button>
-      <button mat-raised-button color="warn" (click)="logout()">Log Out</button>
+      <button mat-raised-button [ngClass]="{ 'logIn-authed' : isLoggedIn === true, 'logIn-unauthed' : isLoggedIn === false }"  class="btn-space" (click)="handleClickedLogin()">Log In</button>
+      <button mat-raised-button [ngClass]="{ 'logOut-authed' : isLoggedIn === true, 'logOut-unauthed' : isLoggedIn === false }" color="warn" (click)="logout()">Log Out</button>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="flex-container">
   <div class="controls">
     <h3 class="rammetto-font number">{{newestSku}}</h3>
-    <button #button color="accent" id="generate" class="generate-button" mat-raised-button>Generate</button>
+    <button #button color="accent" id="generate"
+      [ngClass]="{ 'generate-authed ' : isLoggedIn === true, 'generate-unauthed' : isLoggedIn === false }"
+      class="generate-button" mat-raised-button>Generate</button>
   </div>
   <div class="display">
     <div>
       <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search For Sku">
+        <input type="number" [(ngModel)]="skuSearch" matInput placeholder="Search For Sku">
       </mat-form-field>
+      <button (click)="lookUpSku()" mat-button>Search</button>
 
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -33,13 +36,13 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Person </th>
-          <td mat-cell *matCellDef="let element"> {{element.generatedBy}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.person}} </td>
         </ng-container>
 
         <!-- Time Column -->
         <ng-container matColumnDef="time">
           <th mat-header-cell *matHeaderCellDef> Time </th>
-          <td mat-cell *matCellDef="let element"> {{element.timeStamp | date : 'shortTime'}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.time | date : 'shortTime'}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -50,3 +53,4 @@
     </div>
   </div>
 </div>
+{{skuSearch}}
